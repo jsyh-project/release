@@ -1,0 +1,3 @@
+include ':jsyh'
+include ':app'
+rootProject.name = "Project"
