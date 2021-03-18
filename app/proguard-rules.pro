@@ -42,7 +42,6 @@
 
 #保护代码中的 Annotation 内部类不被混淆
 -keepattributes *Annotation*,InnerClasses
--ignorewarning
 # 避免混淆泛型，这在 JSON 实体映射时非常重要，比如 fastJson
 -keepattributes Signature
 # 抛出异常时保留代码行号，在异常分析中可以方便定位
@@ -129,7 +128,35 @@
 -keepclassmembers class * extends android.webkit.WebViewClient {
     public void *(android.webkit.WebView, jav.lang.String);
 }
+#在app中与HTML5的JavaScript的交互进行特殊处理
+#我们需要确保这些js要调用的原生方法不能够被混淆，于是我们需要做如下处理：
+-keepclassmembers class com.ljd.example.JSInterface {
+    <methods>;
+}
+#
+# ----------------------------- 其他的 -----------------------------
+#
+# 删除代码中Log相关的代码
+-assumenosideeffects class android.util.Log {
+    public static boolean isLoggable(java.lang.String, int);
+    public static int v(...);
+    public static int i(...);
+    public static int w(...);
+    public static int d(...);
+    public static int e(...);
+}
+#
+# ----------------------------- 类和方法 -----------------------------
+#
+#-keep public class com.jsyh.project.**
 
+#不混淆某个包所有的类
+-keep class com.jsyh.project.** { *; }
+
+
+#
+# ----------------------------- 第三方 -----------------------------
+#
 
 
 
