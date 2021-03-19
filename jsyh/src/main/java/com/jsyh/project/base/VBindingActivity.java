@@ -13,8 +13,7 @@ import androidx.viewbinding.ViewBinding;
 import com.jsyh.project.utils.MyUtils;
 
 public abstract class VBindingActivity<VB extends ViewBinding> extends AppCompatActivity {
-    private static Dialog dialog = null;
-    protected VB binding;
+    public VB binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +24,9 @@ public abstract class VBindingActivity<VB extends ViewBinding> extends AppCompat
         setContentView(binding.getRoot());
         initData();
 //        AppManager.getInstance().pushActivity(this); //入栈
-
     }
 
-    protected abstract VB getBinding();
+    public abstract VB getBinding();
 
     public Context getContext() {
         return getBaseContext();
@@ -43,7 +41,7 @@ public abstract class VBindingActivity<VB extends ViewBinding> extends AppCompat
     public abstract void initData();
 
     public void showToast(String str) {
-        MyUtils.showToast(str);
+        MyUtils.toast(str);
     }
 
     /**
@@ -56,10 +54,6 @@ public abstract class VBindingActivity<VB extends ViewBinding> extends AppCompat
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (dialog != null){
-            dialog.dismiss();
-            dialog=null;
-        }
         //退栈
 //        AppManager.getInstance().popActivity(this);
     }

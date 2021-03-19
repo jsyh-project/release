@@ -16,7 +16,7 @@ import androidx.viewbinding.ViewBinding;
 public abstract class VBindingFragment<VB extends ViewBinding> extends Fragment {
     protected FragmentActivity mActivity;
     protected boolean mIsFirstVisible = true;
-    protected VB binding;//全局变量？
+    public VB binding;//全局变量？
 
     @Override
     public void onHiddenChanged(boolean hidden) {
@@ -54,7 +54,7 @@ public abstract class VBindingFragment<VB extends ViewBinding> extends Fragment 
         return binding.getRoot();
     }
 
-    protected abstract VB getBinding(LayoutInflater inflater);
+    public abstract VB getBinding(LayoutInflater inflater);
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

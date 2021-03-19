@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 public enum MyUtils {
     INSTANCE;
-    private static final String TAG = MyUtils.class.getSimpleName();
+    public static final String TAG = MyUtils.class.getSimpleName();
     private static Toast mtoast;
     private static Context mContext;
 
@@ -15,7 +15,7 @@ public enum MyUtils {
         showToast(msg);
     }
 
-    public static void showToast(String msg) {
+    private static void showToast(String msg) {
         if (mtoast == null) {
             mtoast = Single.toast;
         }

@@ -19,3 +19,28 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-optimizationpasses 7
+#
+# ----------------------------- 类和方法 -----------------------------
+#
+# 保持指定包下的类名，包括子包下的类名,方法名，字段名
+-keep class com.jsyh.project**{
+       public <fields>;
+
+       public <methods>;
+}
+
+#-keep class com.jsyh.project.VBindingActivity {
+#     public <fields>;
+#}
+#-keep class com.jsyh.project.VBindingActivity {
+#    public <methods>;
+#}
+
+#
+##不混淆某个包所有的类
+#-keep class com.jsyh.project.** { *; }
+
+#-keepclassmembers class com.jsyh.project.** {
+#    <methods>;
+#}
